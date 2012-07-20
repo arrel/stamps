@@ -19,10 +19,10 @@ Gem::Specification.new do |s|
   s.executables   = `git ls-files -- bin/*`.split("\n").map{ |f| File.basename(f) }
   s.require_paths = ["lib"]
 
-  s.add_development_dependency('simplecov', '~> 0.4.0')
-  s.add_development_dependency('shoulda', '~> 2.11.3')
-  s.add_development_dependency('mocha', '~> 0.9.11')
-  s.add_development_dependency('webmock', '~> 1.6.2')
+  s.add_development_dependency('simplecov', '~> 0.4')
+  s.add_development_dependency('shoulda', '~> 2.11')
+  s.add_development_dependency('mocha', '~> 0.9')
+  s.add_development_dependency('webmock', '~> 1.6')
   s.add_development_dependency('awesome_print')
   s.add_development_dependency('yard')
   s.add_development_dependency('bluecloth')
