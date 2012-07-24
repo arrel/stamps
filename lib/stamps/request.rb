@@ -36,14 +36,21 @@ module Stamps
     # Make Authentication request for the user
     #
     def get_authenticator_token
-      self.request('AuthenticateUser',
+      response = self.request('AuthenticateUser',
         Stamps::Mapping::AuthenticateUser.new(
           :credentials => {
             :integration_id => self.integration_id,
             :username       => self.username,
             :password       => self.password
         })
-      )[:authenticate_user_response][:authenticator]
+      )
+      if response[:errors] && response[:errors].size > 0
+        raise AuthenticationFailed, response[:errors][0] if response[:errors][0] == 'Authentication failed.'
+        raise InvalidIntegrationID, response[:errors][0] if response[:errors][0] == 'Invalid integration ID.'
+        raise InternalServerError, response[:errors][0]
+      else
+        response[:authenticate_user_response][:authenticator]
+      end
     end
 
     # Concatenates namespace and web method in a way the API can understand

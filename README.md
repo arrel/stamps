@@ -62,6 +62,8 @@ them to the configure block:
       config.integration_id = 'XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXXX'
       config.username       = 'STAMPS USERNAME'
       config.password       = 'STAMPS PASSWORD'
+      config.endpoint       = 'https://swsim.testing.stamps.com/swsim/SwsimV23.asmx'
+      config.namespace      = 'http://stamps.com/xml/namespace/2012/04/swsim/swsimv23'
     end
 
 Now we can now be able to retrieve information about our account:

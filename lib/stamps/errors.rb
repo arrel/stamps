@@ -25,6 +25,12 @@ module Stamps
   # Raised when Stamps.com returns the HTTP status code 406
   class NotAcceptable < Error; end
 
+  # Raised when Stamps.com returns the HTTP status code 500 with 'Authentication failed.' message
+  class AuthenticationFailed < Error; end
+
+  # Raised when Stamps.com returns the HTTP status code 500 with 'Invalid integration ID.' message
+  class InvalidIntegrationID < Error; end
+
   # Raised when Stamps.com returns the HTTP status code 500
   class InternalServerError < Error; end
 
