@@ -8,7 +8,7 @@ module Stamps
       # @return [Hash]
       #
       def account(params = {})
-        params[:authenticator] = authenticator_token
+        params[:authenticator] ||= authenticator_token
         response = request('GetAccountInfo', Stamps::Mapping::Account.new(params) )
         response[:errors].empty? ? response[:get_account_info_response][:account_info] : response
       end
@@ -16,7 +16,7 @@ module Stamps
       # Add funds to postage account
       #
       def purchase_postage(params = {})
-        params[:authenticator] = authenticator_token
+        params[:authenticator] ||= authenticator_token
         response = request('PurchasePostage', Stamps::Mapping::PurchasePostage.new(params))
         response[:errors].empty? ? response[:purchase_postage_response] : response
       end
@@ -25,7 +25,7 @@ module Stamps
       # TODO: Should this go somewhere else?
       #
       def carrier_pickup(params = {})
-        params[:authenticator] = authenticator_token
+        params[:authenticator] ||= authenticator_token
         response = request('CarrierPickup', Stamps::Mapping::CarrierPickup.new(params))
         response[:errors].empty? ?  response[:carrier_pickup_response] : response
       end
